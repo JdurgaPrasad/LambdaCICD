@@ -77,17 +77,6 @@ Resources:
       Principal: apigateway.amazonaws.com
     DependsOn:
       - APIGatewayDeployment
-  Authorizer:
-    Type: 'AWS::ApiGateway::Authorizer'
-    Properties:
-      RestApiId: !Ref APIGatewayRestAPI
-      AuthorizerUri: !Sub
-          - >-
-            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaFuncNameArn}/invocations
-          - LambdaFuncNameArn: !GetAtt LambdaFunction.Arn
-      Type: TOKEN
-    DependsOn:
-      - APIGatewayRestAPI  
 Parameters:
   LambdaFuncName:
     Type: String
