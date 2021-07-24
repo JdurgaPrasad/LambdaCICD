@@ -20,6 +20,8 @@ Resources:
     Properties:
       Name:
         Ref: APIName
+      EndpointConfiguration:
+        Ref: EndpointType  
     DependsOn:
       - LambdaFunction
   APIGatewayResource:
@@ -69,6 +71,26 @@ Resources:
       Principal: apigateway.amazonaws.com
     DependsOn:
       - APIGatewayDeployment
+  Authorizer:
+    Type: 'AWS::ApiGateway::Authorizer'
+    Properties:
+      AuthorizerCredentials: !GetAtt
+          - LambdaInvocationRole
+          - Arn
+    AuthorizerResultTtlInSeconds: '300'
+    AuthorizerUri: !Join 
+      - ''
+      - - 'arn:aws:apigateway:'
+        - !Ref 'AWS::Region'
+        - ':lambda:path/2015-03-31/functions/'
+        - !GetAtt 
+          - LambdaAuthorizer
+          - Arn
+        - /invocations
+    Type: TOKEN
+    IdentitySource: method.request.header.Auth
+    Name: DefaultAuthorizer
+    RestApiId: !Ref APIGatewayRestAPI
 Parameters:
   LambdaFuncName:
     Type: String
@@ -76,6 +98,9 @@ Parameters:
   APIName:
     Type: String
     Default: API_api-lambda-db
+  EndpointType:
+    Type: String
+    Default: REGIONAL
   EnvironmentName:
     Type: String
     Default: Dev
