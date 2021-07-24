@@ -77,7 +77,6 @@ Resources:
       AuthorizerCredentials: !GetAtt
           - LambdaInvocationRole
           - Arn
-    AuthorizerResultTtlInSeconds: '300'
     AuthorizerUri: !Join 
       - ''
       - - 'arn:aws:apigateway:'
