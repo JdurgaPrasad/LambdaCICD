@@ -77,15 +77,10 @@ Resources:
       AuthorizerCredentials: !GetAtt
           - LambdaInvocationRole
           - Arn
-    AuthorizerUri: !Join 
-      - ''
-      - - 'arn:aws:apigateway:'
-        - !Ref 'AWS::Region'
-        - ':lambda:path/2015-03-31/functions/'
-        - !GetAtt 
-          - LambdaAuthorizer
-          - Arn
-        - /invocations
+      AuthorizerUri: !Sub
+          - >-
+            arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaFuncNameArn}/invocations
+          - LambdaFuncNameArn: !GetAtt LambdaFunction.Arn
     Type: TOKEN
     IdentitySource: method.request.header.Auth
     Name: DefaultAuthorizer
