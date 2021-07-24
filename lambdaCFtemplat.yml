@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  LambdaFunction:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      Code:
+        S3Bucket:
+          Fn::Sub: "testtestbucket2021"
+        S3Key:
+          Fn::Sub: "LambdaPackge.zip"
+      FunctionName:
+        Ref: LambdaFuncName
+      Handler: welcome.lambda_handler
+      Runtime: python3.6
+      Role: 
+        Fn::Sub: arn:aws:iam::549289340310:role/Lambdaroleforcfcf 
+      Timeout: 900
+Parameters:
+  LambdaFuncName:
+    Type: String
+    Default: LambdaDemo
