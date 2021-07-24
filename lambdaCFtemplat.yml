@@ -24,7 +24,7 @@ Resources:
         S3Key:
           Fn::Sub: "welcome.zip"
       FunctionName:
-        Ref: LambdaFuncName
+        Ref: LambdaFuncName2
       Handler: welcome2.lambda_handler
       Runtime: python3.6
       Role: 
@@ -34,3 +34,7 @@ Parameters:
   LambdaFuncName:
     Type: String
     Default: LambdaDemo
+  LambdaFuncName2:
+    Type: String
+    Default: LambdaDemo2
+
