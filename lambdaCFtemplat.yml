@@ -21,7 +21,8 @@ Resources:
       Name:
         Ref: APIName
       EndpointConfiguration:
-        Ref: EndpointType  
+        Types:
+          - REGIONAL
     DependsOn:
       - LambdaFunction
   APIGatewayResource:
@@ -91,9 +92,6 @@ Parameters:
   APIName:
     Type: String
     Default: API_api-lambda-db
-  EndpointType:
-    Type: String
-    Default: REGIONAL
   EnvironmentName:
     Type: String
     Default: Dev
