@@ -15,6 +15,21 @@ Resources:
       Role: 
         Fn::Sub: arn:aws:iam::549289340310:role/Lambdaroleforcfcf 
       Timeout: 900
+  LambdaFunction:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      Code:
+        S3Bucket:
+          Fn::Sub: "testtestbucket2021"
+        S3Key:
+          Fn::Sub: "welcome.zip"
+      FunctionName:
+        Ref: LambdaFuncName
+      Handler: welcome2.lambda_handler
+      Runtime: python3.6
+      Role: 
+        Fn::Sub: arn:aws:iam::549289340310:role/Lambdaroleforcfcf 
+      Timeout: 900
 Parameters:
   LambdaFuncName:
     Type: String
