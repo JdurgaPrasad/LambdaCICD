@@ -79,9 +79,6 @@ Resources:
   Authorizer:
     Type: 'AWS::ApiGateway::Authorizer'
     Properties:
-      AuthorizerCredentials: !GetAtt
-          - LambdaInvocationRole
-          - Arn
       AuthorizerUri: !Sub
           - >-
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaFuncNameArn}/invocations
