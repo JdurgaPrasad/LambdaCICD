@@ -86,6 +86,8 @@ Resources:
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaFuncNameArn}/invocations
           - LambdaFuncNameArn: !GetAtt LambdaFunction.Arn
       Type: TOKEN
+    DependsOn:
+      - APIGatewayRestAPI  
 Parameters:
   LambdaFuncName:
     Type: String
