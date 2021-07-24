@@ -22,7 +22,7 @@ Resources:
         S3Bucket:
           Fn::Sub: "testtestbucket2021"
         S3Key:
-          Fn::Sub: "welcome.zip"
+          Fn::Sub: "welcome2.zip"
       FunctionName:
         Ref: LambdaFuncName2
       Handler: welcome2.lambda_handler
