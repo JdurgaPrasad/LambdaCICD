@@ -82,7 +82,6 @@ Resources:
             arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaFuncNameArn}/invocations
           - LambdaFuncNameArn: !GetAtt LambdaFunction.Arn
     Type: TOKEN
-    IdentitySource: method.request.header.Auth
     Name: DefaultAuthorizer
     RestApiId: !Ref APIGatewayRestAPI
 Parameters:
