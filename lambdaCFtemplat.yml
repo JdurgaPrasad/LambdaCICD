@@ -20,9 +20,6 @@ Resources:
     Properties:
       Name:
         Ref: APIName
-      EndpointConfiguration:
-        Types:
-          - REGIONAL
     DependsOn:
       - LambdaFunction
   APIGatewayResource:
